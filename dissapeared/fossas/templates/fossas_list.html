@@ -1,0 +1,81 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% block title %} Instituciones {% endblock %}
+
+{% block body_class %}Intution{% endblock %}
+
+{% block body %}
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img class="ing-f" src="{{STATIC_URL}}base/img/fossa.svg"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Fosas</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+<div class="col-md-6">
+		</div>
+	<div class="btn-add">
+    <a href="{% url "upload_fossas" %}" class="btn btn-primary pull-right" id="btn-list">Agregar una Fosa</a>
+    </div>
+    <div style="clear:both;">
+		{% for item in items %}
+			<div class="mm-sjcat-T2-categories">
+			<a href="{% url "update_fossas" item.id %}" >
+				<div class="mm-sjcat-T2-image">
+					<img src="{{STATIC_URL}}base/img/fossa.svg">
+				</div>
+				<div class="mm-sjcat-T2-title">Cuerpos: {{item.bodys|truncatechars:60}}</div>
+				<p class="mm-sjcat-T2-des">Referencia: <span class="owner">{{item.reference|truncatewords:16}}</span></p>
+				<p class="mm-sjcat-T2-des"><img src="{{STATIC_URL}}base/img/users_blue.svg" title="Editar Fosa" class="icon-list"/> datos: {{item.datas}}</p>
+				<p class="mm-sjcat-T2-des"><img src="{{STATIC_URL}}base/img/clock.svg" title="Editar Fosa" class="icon-list"/> Fecha de descubrimiento: {{item.discovery_date|date:"l j, F, Y"}}</p>
+                <span class="narrEdit">
+                    <img src="{{STATIC_URL}}base/img/draw.svg" title="Editar Fosa" class="img-docto"/>
+			    </span>
+			</a>
+			<a href="{% url "update_fossas_ubication" item.id %}" >
+                <span class="narrEdit">
+                    <img src="{{STATIC_URL}}base/img/placeholder.svg" title="Editar ubicación de la fosa" class="img-docto"/>
+			    </span>
+			</a>
+			<div class="mm-sjcat-T2-dot"></div>
+		</div>
+		{% empty %}
+		  <li>Aún no hay Fosas</li>
+		{% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{{ STATIC_URL }}base/js/jquery.min.js"></script>
+    <script type="text/javascript">
+  $(document).ready(function(){
+    $('.searchs').click(function(e){
+        alert("entra?");
+         consulta = $("#search_agreement").val();
+         $.ajax({
+         data: {'nombre': consulta},
+         url: '/agreement/searchs/',
+         type: 'get',
+         success : function(data) {
+                 console.log(data[0].nombre);
+         },
+         error : function(message) {
+                 console.log(message);
+              }
+         });
+    });
+
+
+
+
+
+  });
+</script>
+{% endblock %}

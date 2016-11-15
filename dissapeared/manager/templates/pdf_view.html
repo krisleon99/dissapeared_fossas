@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <img src="{{ STATIC_URL }}agreements/img/LOGO-CONACYT.png" alt="www.conacyt.org"  />
+    <div style="padding: 15px 0; border-bottom: 1px dotted #CCC;">
+       <div><span class="agree-detail">No. Prog:</span>     {{ agree.prog_number|safe|escape }}</div>
+       <div><span class="agree-detail">Instrumento Legal Subscrito:</span>     {{ agree.legasl_instrument|safe|escape }}</div>
+       <div><span class="agree-detail">Clasificacion del Documento:</span>     {{ agree.document_classification|safe|escape }}</div>
+       <div><span class="agree-detail">Numero de Registro:</span>     {{ agree.registration_number|safe|escape }}</div>
+       <div><span class="agree-detail">Siglas de Institucion Contraparte:</span>     {{ agree.conterpart_institution_acroniym|safe|escape }}</div>
+       <div><span class="agree-detail">Ambito de Subscripcion:</span>     {{ agree.subscription_field|safe|escape }}</div>
+       <div> <span class="agree-detail">Sector Contraparte:</span>    {{ agree.conterpart_sector|safe|escape }}</div>
+       <div><span class="agree-detail">Institucion Contraparte:</span>     {{ agree.conterpart_institution|safe|escape }}</div>
+       <div>  <span class="agree-detail">Descripcion del Convenio:</span>   {{ agree.description|safe|escape }}</div>
+       <div> <span class="agree-detail">fecha de firma:</span>    {{ agree.signature_date|safe|escape }}</div>
+        <div> <span class="agree-detail">fecha de inicio:</span>   {{ agree.start_date|safe|escape }}</div>
+        <div> <span class="agree-detail">fecha de termino:</span>   {{ agree.end_date|safe|escape }}</div>
+		<div><span class="agree-detail">Duración:</span>{{ agree.status|safe|escape }}</div>
+        <div>  <span class="agree-detail">Vigente:</span>  {{ agree.modal|safe|escape }}</div>
+        <div> <span class="agree-detail">Modalidad del Instrumento:</span>   {{ agree.version_docto|safe|escape }}</div>
+        <div>  <span class="agree-detail">Version del documento:</span>  {{ agree.creation_date|safe|escape }}</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% block title %} Usuario desactivado {% endblock %}
+
+
+
+{% block body_class %}Usuario desactivado{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img src="{{STATIC_URL}}base/img/users_blue.svg" alt="" style="width: 50px; height: 50px;"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>El usuario no esta activo</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+		<p>Contactarse con el administrador, para resolver el problema.</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript">
+
+</script>
+{% endblock %}

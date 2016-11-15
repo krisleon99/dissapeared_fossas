@@ -1,0 +1,145 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% block title %} Desaparecidos {% endblock %}
+
+{% block body_class %}Desaparecido{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img class="ing-f" src="{{STATIC_URL}}base/img/missing.png"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Expediente del desaparecido</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+<div class="col-md-6">
+</div>
+ <table class="table table-striped">
+        <caption class=".detail-tbl">Datos generales</caption>
+        <tr>
+            <th class="detail-tbl-th">Nombre</th>
+            <th class="detail-tbl-th">Primer Apellido</th>
+            <th class="detail-tbl-th">Segundo Apellido</th>
+            <th class="detail-tbl-th">Identificacion</th>
+            <th class="detail-tbl-th">Numero</th>
+            <th class="detail-tbl-th">Sexo</th>
+            <th class="detail-tbl-th">
+            <a href="{% url "update_missing" miss.id %}" >
+                <img src="{{STATIC_URL}}base/img/users_blue.svg" title="Editar Datos Generales" class="icon-list"/>
+            </a>    
+            </th>
+        </tr>
+        <tr>
+            <td>{{ miss.nombre }}</td>
+            <td>{{ miss.primer_apellido }}</td>
+            <td>{{ miss.segundo_apellido }}</td>
+            
+            <td>{{ miss.TIPO_DE_IDENTIFICACION }}</td>
+            <td>{{ miss.num_de_identificacion }}</td>
+            <td colspan="2">{{ miss.sexo }}</td>
+        </tr>
+</table>
+
+ <table class="table table-striped">
+        <caption class=".detail-tbl">Origen</caption>
+        <tr>
+            <th class="detail-tbl-th">Nacionalidad</th>
+            <th class="detail-tbl-th">Pais de origen</th>
+            <th class="detail-tbl-th">Colonia</th>
+            <th class="detail-tbl-th">Calle</th>
+            <th class="detail-tbl-th">Numero</th>
+
+        </tr>
+        <tr>
+            <td>{{ origi_m.nacionalidad }}</td>
+            <td>{{ origi_m.pais_origen }}</td>
+            <td>{{ origi_m.colonia }}</td>
+            
+            <td>{{ origi_m.calle }}</td>
+        <td>{{ origi_m.numero }}</td>
+        </tr>
+</table>
+
+ <table class="table table-striped">
+        <caption class=".detail-tbl">Descripcion Fisica del Desaparecido</caption>
+        <tr>
+            <th class="detail-tbl-th">Descripción</th>
+            <th class="detail-tbl-th">Señas Particulares</th>
+            <th class="detail-tbl-th">Estatura</th>
+            <th class="detail-tbl-th">Complexión</th>
+            <th class="detail-tbl-th">Tez</th>
+            <th class="detail-tbl-th">Tipo de  abello</th>
+            <th class="detail-tbl-th">Color de cabello</th>
+            <th class="detail-tbl-th">Color de ojos</th>
+
+        </tr>
+        <tr>
+        <td>{{ physic.descripcion_fisica_desaparecido }}</td>
+        <td>{{ physic.senias_particulares }}</td>
+        <td>{{ physic.estatura }}</td>
+        <td>{{ physic.complexion }}</td>
+        <td>{{ physic.tez }}</td>
+        <td>{{ physic.tipo_de_cabello }}</td>
+        <td>{{ physic.color_cabello }}</td>
+        <td>{{ physic.color_de_ojos }}</td>
+        </tr>
+</table>
+
+ <table class="table table-striped">
+        <caption class=".detail-tbl">Última vez visto</caption>
+        <tr>
+            <th class="detail-tbl-th">fecha desaparicion</th>
+            <th class="detail-tbl-th">Estaba sólo o acompañado</th>
+            <th class="detail-tbl-th">Tiene averiguacion previa</th>
+            <th class="detail-tbl-th">Núm. Averiguación</th>
+            <th class="detail-tbl-th">Tipo de lugar ultimavez visto</th>
+            <th class="detail-tbl-th">Editar</th>
+
+        </tr>
+        <tr>
+            <td>{{ place.fecha_desaparicion }}</td>
+            <td>{{ place.desaparicion_en_grupo }}</td>
+            <td>{{ place.tiene_averiguacion_previa }}</td>
+            
+            <td>{{ place.NUM_AVERIGUACION }}</td>
+        <td>{{ place.tipo_lugar_ultimavez_visto }}</td>
+        <td>{{ place.current_date }}</td>
+        </tr>
+</table>
+
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{{ STATIC_URL }}base/js/jquery.min.js"></script>
+    <script type="text/javascript">
+  $(document).ready(function(){
+    $('.searchs').click(function(e){
+        alert("entra?");
+         consulta = $("#search_agreement").val();
+         $.ajax({
+         data: {'nombre': consulta},
+         url: '/agreement/searchs/',
+         type: 'get',
+         success : function(data) {
+                 console.log(data[0].nombre);
+         },
+         error : function(message) {
+                 console.log(message);
+              }
+         });
+    });
+
+
+
+
+
+  });
+</script>
+{% endblock %}

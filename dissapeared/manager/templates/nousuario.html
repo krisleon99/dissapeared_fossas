@@ -1,0 +1,33 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% block title %} Error de acceso {% endblock %}
+
+
+
+{% block body_class %}Error de acceso{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img src="{{STATIC_URL}}base/img/users_blue.svg" alt="" style="width: 50px; height: 50px;"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Error de acceso</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+		<p>El usuario y la contraseña no coinciden o no existen.</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript">
+
+</script>
+{% endblock %}

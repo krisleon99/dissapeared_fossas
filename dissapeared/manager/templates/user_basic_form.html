@@ -1,0 +1,49 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block title %} Usuario {% endblock %}
+
+{% block body_class %}Usuario{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img src="{{STATIC_URL}}base/img/purpose-of-saving-money_blue.png" alt=""></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Editar Usuario</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6" id="general">
+		<a href="{% url 'manager.views.change_password' %}">
+		<img src="{{ STATIC_URL }}base/img/key.svg" class="login-icons"/> Cambiar Contraseña
+		</a> 
+ 
+
+			<form id="formulario" method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+				{{formulario|as_bootstrap}}
+				<p><input type="submit" class="btn btn-primary" value="Confirmar"></p>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+ <script src="{{STATIC_URL}}base/js/jquery.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){
+	 $('.change_pass').on("click", function(e){
+	 	alert("here");
+	 });
+	 
+ });
+</script>
+{% endblock %}

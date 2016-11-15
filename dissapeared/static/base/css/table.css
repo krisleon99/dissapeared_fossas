@@ -1,0 +1,100 @@
+ /*table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: 45px;
+    width: 480px;
+    text-align: left;
+    border-collapse: collapse; }
+
+th {
+    font-size: 13px;
+    font-weight: normal;
+    padding: 8px;
+    background: #b9c9fe;
+    border-top: 4px solid #aabcfe;
+    border-bottom: 1px solid #fff;
+    color: #039; }
+
+td {    padding: 8px;
+    background: #e8edff;
+    border-bottom: 1px solid #fff;
+    color: #669;
+    border-top: 1px solid transparent; }
+
+tr:hover td {
+    background: #d0dafd;
+    color: #339; }
+     */
+
+.detail-tbl{
+    text-align: center;
+}
+ .icon-list{
+     width: 20px;
+     height: 20px;
+ }
+ .border-user{
+    float:left;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 32px 10px 45px 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #96a1a3;
+    line-height: 1.4em;
+    border: 1px dashed #ddd !important;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #fff;
+    width: 270px;
+    height: 150px;
+    display: inline-block;
+
+ }
+
+ .user-name{
+     padding: 10px 20px 20px 35px;
+ }
+.detail-tbl-th{
+    font-weight: bold;
+}
+.change_pass{
+    cursor: pointer;
+}
+
+input[type=password] {
+  border: 1px dotted #999;
+  border-radius: 0;
+
+  -webkit-appearance: none;
+  border: 1px solid #DBE1EB;
+  margin-bottom: 20px; 
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+  color: #2E3133;
+
+}
+input[type=password]:focus{
+  color: #2E3133;
+  border-color: #FBFFAD;
+  }
+.ing-f{
+  width: 50px;
+  height: 50px;
+}

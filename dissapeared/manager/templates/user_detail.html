@@ -1,0 +1,76 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% block title %} Bienvenido {% endblock %}
+
+
+
+{% block body_class %}Bienvenido{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img src="{{STATIC_URL}}base/img/user.svg" alt="" style="width: 50px; height: 50px;"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Bievenido  {{us.username|upper}}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+
+         <table class="table table-striped">
+            <caption class="detail-tbl">
+                <a href="{% url 'manager.views.user_update_basic' us.id %}"> {{ us.first_name|upper }}
+                    Editar Perfil
+                </a>
+            </caption>
+            <tr>
+                <td rowspan="6" class="detail-tbl">
+                     <img src="{{STATIC_URL}}avatar/img/default-avatar.jpg" >
+                </td>
+                <th class="detail-tbl-th">Nombre:</th>
+                <td>{{ us.first_name}}</td>
+            </tr>
+
+              <tr>
+                <th class="detail-tbl-th">Apellido:</th>
+                <td>{{ us.last_name}}</td>
+            </tr>
+
+             <tr>
+                <th class="detail-tbl-th">Correo:</th>
+                 <td>{{us.email}}</td>
+            </tr>
+
+             <tr class="detail-tbl">
+                    {% if us.is_active %}
+                        <td colspan="2" class="detail-tbl-th">Usuario Activo </td>
+                        {% else %}
+                         <td colspan="2" class="detail-tbl-th">Usuario Inactivo</td>
+                    {% endif %}
+            </tr>
+
+           <tr>
+                <th class="detail-tbl-th">último acceso:</th>
+                 <td>{{us.last_login}}</td>
+            </tr>
+
+          <tr>
+                <th class="detail-tbl-th">Miembro desde el:</th>
+                 <td>{{us.date_joined}}</td>
+            </tr>
+
+        </table>
+
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript">
+
+</script>
+{% endblock %}

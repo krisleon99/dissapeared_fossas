@@ -1,0 +1,41 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% block title %} Usuarios {% endblock %}
+
+
+
+{% block body_class %}Usuarios{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img src="{{STATIC_URL}}base/img/users.svg" alt="" style="width: 50px; height: 50px;"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Usuarios</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+        {% for us in items %}
+
+            <div class="border-user">
+                <a href="{% url 'manager.views.user_update' us.id %}"> <img src="{{STATIC_URL}}avatar/img/default-avatar.jpg" title="Editar Usuario"></a>
+                <span class="user-name">{{ us.username|truncatechars:14 }}</span>
+            </div>
+            {% empty %}
+            No hay usuarios registrados
+        {% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script type="text/javascript">
+
+</script>
+{% endblock %}

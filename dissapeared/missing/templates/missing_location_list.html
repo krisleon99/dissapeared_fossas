@@ -1,0 +1,69 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% block title %} Desaparecidos {% endblock %}
+
+{% block body_class %}Ubicación{% endblock %}
+
+{% block extra_head %}
+  
+     <link href="{{ STATIC_URL }}base/css/map_fossas.css" rel="stylesheet"/>
+              <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.0/dist/esri-leaflet-geocoder.css">
+{% endblock %}
+{% block body %}
+
+<!--HEADER-TITULO-->
+<div id="page-header" class="content">
+	<div class="container">
+		<div class="titulo-blk-row">
+			<div class="titulo-img blk-cell"><img class="ing-f" src="{{STATIC_URL}}base/img/fossa.svg"></div>
+			<div class="titulo-txt blk-cell">
+				<h4>Desaparecidos 
+                    <div class="btn-add">
+                        <a href="{% url "list_missing" %}" class="btn btn-primary pull-right" id="btn-list">Ver datos de desaparecidos</a>
+                    </div>
+                </h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div id='map'>d</div>
+{% endblock %}
+{% block extra_script %}
+    <script src="{{ STATIC_URL }}base/js/jquery.min.js"></script>
+    <!-- Load Leaflet from CDN-->
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet-src.js"></script>
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.0.4"></script>
+      <!-- Esri Leaflet Geocoder -->
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.0"></script>
+<script type="text/javascript">
+var arr_ubication = [];
+var arr_data_fossas = [];
+var arr_lat = [];
+var arr_lng = [];
+var foss_point_l = "";
+var foss_point_ln = "";
+$(document).ready(function(){
+    console.log(" va va va");
+      {% for fos in agree_fos%}
+         foss_point_l = {{fos.lat}};
+         foss_point_ln = {{fos.lng}};
+         console.log(foss_point_l);
+         console.log(foss_point_ln);
+         arr_lat.push(foss_point_l);
+         arr_lng.push(foss_point_ln);
+       {% endfor %}
+    //arr_data_fossas = {{arr_foss}};
+    console.log("arr_data_fossas");
+    console.log(arr_lat);
+    console.log(arr_lng);
+});
+    
+</script>
+    {% include "location_missing_list.js" %}
+   
+{% endblock %}

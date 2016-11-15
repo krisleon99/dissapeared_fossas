@@ -1,0 +1,48 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% block title %} Desaparecidos {% endblock %}
+
+{% block body_class %}Ubicación{% endblock %}
+
+{% block extra_head %}
+  
+     <link href="{{ STATIC_URL }}base/css/map_fossas.css" rel="stylesheet"/>
+              <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.0/dist/esri-leaflet-geocoder.css">
+{% endblock %}
+{% block body %}
+
+{% include "fossas_modal.html" %}
+
+<!--HEADER-TITULO-->
+<div id="page-header" class="content">
+	<div class="container">
+		<div class="titulo-blk-row">
+			<div class="titulo-img blk-cell"><img class="ing-f" src="{{STATIC_URL}}base/img/fossa.svg"></div>
+			<div class="titulo-txt blk-cell">
+				<h4>Ingresa la ubicación del desaparecido</h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id='map'>d</div>
+
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{{ STATIC_URL }}base/js/jquery.min.js"></script>
+         <!-- Load Leaflet from CDN-->
+
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet-src.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.0.4"></script>
+      <!-- Esri Leaflet Geocoder -->
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.0"></script>
+    {% include "map_missing.js" %}
+   
+{% endblock %}

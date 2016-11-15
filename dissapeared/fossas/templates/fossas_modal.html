@@ -1,0 +1,25 @@
+{% load bootstrap_tags %}
+
+<!-- Contenido oculto para listar Mapas -->
+    <div id="development" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agrega los datos de la Fosa</h4>
+                </div>
+                <div id="qmaps-elements" class="modal-body" style="width:540px; height:750px; overflow-y: auto; left:20px;">
+                       <form id="formulario" method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+                            {{ formulario.media }}
+                            {{formulario|as_bootstrap}}
+                            <p><input type="submit" class="btn btn-primary" value="Confirmar"></p>
+                        </form>
+                </div>
+                <div class="modal-footer">
+                <div class="stay-inner"></div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,94 @@
+{% extends "research_base.html" %}
+{% load i18n %}
+{% load bootstrap_tags %}
+{% block title %} Desaparecidos {% endblock %}
+
+{% block body_class %}Desaparecido{% endblock %}
+
+{% block body %}
+
+<!--HEADER-TITULO-->
+		<div id="page-header" class="content">
+			<div class="container">
+				<div class="titulo-blk-row">
+					<div class="titulo-img blk-cell"><img class="ing-f" src="{{STATIC_URL}}base/img/missing.png"></div>
+					<div class="titulo-txt blk-cell">
+						<h2>Desaparecidos</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="container">
+<div class="col-md-6">
+
+
+
+		</div>
+	<div class="btn-add">
+   
+    <a href="{% url "upload_Physical_Description" %}" class="btn btn-primary pull-right" id="btn-list">Descripción Fisica</a>
+    <a href="{% url "upload_origin" %}" class="btn btn-primary pull-right" id="btn-list">Origen</a>
+	<a href="{% url "upload_place" %}" class="btn btn-primary pull-right" id="btn-list">Lugar donde desaparecio</a>
+	<a href="{% url "upload_missing" %}" class="btn btn-primary pull-right" id="btn-list">Agregar una Desaparecido</a>
+    </div>
+
+    <div style="clear:both;">
+		{% for item in items %}
+			<div class="mm-sjcat-T2-categories">
+			<a href="{% url "update_missing" item.id %}" >
+				<div class="mm-sjcat-T2-image">
+					<img src="{{STATIC_URL}}base/img/institution.svg">
+				</div>
+				<div class="mm-sjcat-T2-title">{{item.nombre|truncatechars:60}}</div>
+				<p class="mm-sjcat-T2-des"><span class="owner">{{item.primer_apellido|truncatewords:16}}</span></p>
+				<p class="mm-sjcat-T2-des"><img src="{{STATIC_URL}}base/img/people.svg" title="Editar Desaparecido" class="icon-list"/> {{item.segundo_apellido}}</p>
+				<p class="mm-sjcat-T2-des"><img src="{{STATIC_URL}}base/img/clock.svg" title="Editar Desaparecido" class="icon-list"/> {{item.birthday_date|date:"l j, F, Y"}}</p>
+                <span class="narrEdit">
+                    <img src="{{STATIC_URL}}base/img/draw.svg" title="Editar Desaparecido" class="img-docto"/>
+			    </span>
+			</a>
+			<a href="{% url "detail_missing" item.id %}" >
+                <span class="narrEdit">
+                    <img src="{{STATIC_URL}}base/img/eye.svg" title="Editar Desaparecido" class="img-docto"/>
+			    </span>
+			</a>
+
+			<div class="mm-sjcat-T2-dot"></div>
+		</div>
+		{% empty %}
+		  <li>Aún no hay Desaparecidos</li>
+		{% endfor %}
+    </div>
+
+
+
+</div>
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{{ STATIC_URL }}base/js/jquery.min.js"></script>
+    <script type="text/javascript">
+  $(document).ready(function(){
+    $('.searchs').click(function(e){
+        alert("entra?");
+         consulta = $("#search_agreement").val();
+         $.ajax({
+         data: {'nombre': consulta},
+         url: '/agreement/searchs/',
+         type: 'get',
+         success : function(data) {
+                 console.log(data[0].nombre);
+         },
+         error : function(message) {
+                 console.log(message);
+              }
+         });
+    });
+
+
+
+
+
+  });
+</script>
+{% endblock %}
